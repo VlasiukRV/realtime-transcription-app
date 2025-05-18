@@ -1,0 +1,120 @@
+@import './variables';
+
+body {
+  font-family: sans-serif;
+  background-color: $bg-color;
+}
+
+/* Icon inside buttons */
+button img {
+  width: 20px;           /* Set icon width */
+  height: 20px;          /* Set icon height */
+  margin-right: 10px;    /* Space between icon and text */
+}
+
+/* Side panel styles */
+.side-panel {
+  position: fixed;       /* Fixed to viewport */
+  top: 55px;             /* Below header */
+  left: 0;
+  width: 70px;           /* Panel width */
+  height: 100vh;         /* Full viewport height */
+  padding-top: 20px;     /* Top padding for spacing */
+  background-color: #fff;
+  color: black;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  overflow: hidden;
+  z-index: 20;           /* On top of main content */
+  box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
+  transition: transform 0.5s ease;
+  transform: translateX(0); /* Shown by default */
+}
+
+.side-panel.closed {
+  transform: translateX(-100%); /* Slide off-screen when closed */
+}
+
+/* Buttons inside side panel */
+.side-panel button {
+  margin: 8px 0;
+  padding: 8px 12px;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  background-color: #e5e7eb;
+  color: #111827;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.2s ease;
+  width: auto;
+}
+
+.side-panel button:hover {
+  background-color: #d1d5db;
+  transform: scale(1.05); /* Slight zoom on hover */
+}
+
+/* Prevent content overlap with side panel */
+header, footer, main {
+  margin-left: 0;
+}
+
+/* Main content wrapper with background image */
+.main-content {
+  position: relative;
+  overflow: hidden;
+  padding: 20px;
+}
+
+.main-content::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: url('/img/background-image.png');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  opacity: 0.05;        /* Light background visibility */
+  z-index: -1;          /* Behind the content */
+}
+
+/* Ensure main content stays above background */
+main {
+  position: relative;
+  z-index: 1;
+}
+
+/* Shift content when panel is open */
+.shifted {
+  margin-left: 70px;
+}
+
+/* Message bubble style */
+.message {
+  position: relative;
+  display: inline-block;
+  max-width: 90%;
+}
+
+/* Bubble tail in the top-right corner (rotated 45deg) */
+.message::after {
+  content: "";
+  position: absolute;
+  top: 4px;
+  right: -3px;
+  width: 16px;
+  height: 16px;
+  background-color: rgb(219, 234, 254);
+  transform: rotate(45deg);
+}
+
+/* Dark mode tail color */
+.dark .message::after {
+  background-color: #374151;
+}
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;

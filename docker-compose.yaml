@@ -1,0 +1,13 @@
+version: '3.8'
+
+services:
+  app:
+    build: .
+    env_file:
+      - .env
+    volumes:
+      - .:/app
+    ports:
+      - "${PORT}:${PORT}"
+    working_dir: /app
+    command: sh -c "${MODE:-npm run dev}"
