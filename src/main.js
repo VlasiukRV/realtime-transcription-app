@@ -132,6 +132,12 @@ function initializeTranslationApp(serverUrl) {
                 $('<div class="message bg-blue-100 dark:bg-blue-800 text-blue-900 dark:text-blue-100 rounded-lg px-4 py-2 flex-1">')
                     .text(translated_text)
                     .attr('title', original_text)
+                    .on('touchstart', function () {
+                        $(this).text(original_text);
+                    })
+                    .on('touchend touchcancel', function () {
+                        $(this).text(translated_text);
+                    })
             )
             .append(
                 $('<span class="message-audio-icon ml-2 cursor-pointer w-1/12 text-center">🔊</span>')
