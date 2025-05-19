@@ -282,7 +282,9 @@ async function testSocketConnection(server_url) {
                 }, 300);
             };
 
-            testSocket.onerror = () => {
+            testSocket.onerror = (event) => {
+                console.error("WebSocket error event:", event);
+
                 $("#statusMessage").text("Failed to connect to " + server_url);
                 resolve(false); // Ошибка подключения
             };
