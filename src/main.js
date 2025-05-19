@@ -74,7 +74,7 @@ function initializeTranslationApp(serverUrl) {
         if (socket && socket.readyState < 2) return;
 
         reconnecting = true;
-        const wsUrl = `ws://${serverUrl}:8000/ws/transcribe/${lang}`;
+        const wsUrl = `wss://${serverUrl}:8000/ws/transcribe/${lang}`;
         $serviceMessageOutput.text(`Connecting to ${wsUrl}...`);
 
         try {
@@ -194,7 +194,7 @@ function initializeTranslationApp(serverUrl) {
     async function changeLanguage(lang) {
         localStorage.setItem('selectedLanguage', lang);
         try {
-            const res = await fetch(`http://${serverUrl}:8000/api/addLang`, {
+            const res = await fetch(`https://${serverUrl}:8000/api/addLang`, {
                 method: "POST",
                 headers: {"Content-Type": "application/json"},
                 body: JSON.stringify({lang})
@@ -217,7 +217,7 @@ function initializeTranslationApp(serverUrl) {
 
     async function fetchLanguages() {
         try {
-            const res = await fetch(`http://${serverUrl}:8000/api/languages`);
+            const res = await fetch(`https://${serverUrl}:8000/api/languages`);
             if (!res.ok) throw new Error('Fetch failed');
             const langs = await res.json();
             return langs.map(code => ({value: code, text: code}))
@@ -271,7 +271,7 @@ async function testSocketConnection(server_url) {
 
     return new Promise((resolve) => {
         try {
-            let ping_server_url = `ws://${server_url}:8000/ws/ping`;
+            let ping_server_url = `wss://${server_url}:8000/ws/ping`;
             const testSocket = new WebSocket(ping_server_url);
 
             testSocket.onopen = () => {

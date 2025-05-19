@@ -1,6 +1,6 @@
 {
   "scripts": {
-    "dev": "npm run copy-js && npm run copy-html && npm run copy-img && npx concurrently \"npm run sass --watch src/styles/styles.scss dist/styles.css\" \"npx browser-sync start --server dist --files 'dist/*' --port ${PORT:-3000}\"",
+      "dev": "npm run copy-js && npm run copy-html && npm run copy-img && npx concurrently \"npm run sass --watch src/styles/styles.scss dist/styles.css\" \"npx browser-sync start --server dist --files 'dist/*' --port ${PORT:-3000}\"",
 
     "sass": "postcss src/styles/styles.scss -o dist/styles.css",
     "copy-img": "mkdir -p dist/img && cp -r src/img/* dist/img/",
