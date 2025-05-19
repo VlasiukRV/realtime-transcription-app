@@ -75,7 +75,7 @@ function initializeTranslationApp(serverUrl) {
 
         reconnecting = true;
         const wsUrl = `wss://${serverUrl}:8000/ws/transcribe/${lang}`;
-        $serviceMessageOutput.text(`Connecting to ${wsUrl}...`);
+        $serviceMessageOutput.text(`Connecting to ${serverUrl} ( ${wsUrl} )...`);
 
         try {
             socket = new WebSocket(wsUrl);
