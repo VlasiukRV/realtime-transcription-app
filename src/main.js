@@ -317,38 +317,41 @@ const $translationApp = $("#translation-app");
 // On load: if server is already selected, go directly to app
 $(document).ready(() => {
     const server_url = localStorage.getItem("selectedServer");
+    window.location.href = `http://${server_url}:8000/`;
 
-    testSocketConnection(server_url).then((isConnected) => {
-
-        if (isConnected) {
-            $serverSelection.addClass("hidden");
-            $translationApp.removeClass("hidden");
-
-            if (typeof initializeTranslationApp === "function") {
-                initializeTranslationApp(server_url);
-            }
-        }
-
-    });
+    // testSocketConnection(server_url).then((isConnected) => {
+    //
+    //     if (isConnected) {
+    //         $serverSelection.addClass("hidden");
+    //         $translationApp.removeClass("hidden");
+    //
+    //         if (typeof initializeTranslationApp === "function") {
+    //             initializeTranslationApp(server_url);
+    //         }
+    //     }
+    //
+    // });
 
     // Handle server selection and show translation UI
     $("#connectBtn").on("click", () => {
         let server_url = $('#serverSelector').val();
+        localStorage.setItem("selectedServer", server_url);
+        window.location.href = `http://${server_url}:8000/`;
 
-        testSocketConnection(server_url).then((isConnected) => {
-            if (isConnected) {
-                localStorage.setItem("selectedServer", server_url);
-
-                $serverSelection.addClass("hidden");
-                $translationApp.removeClass("hidden");
-
-                if (typeof initializeTranslationApp === "function") {
-                    initializeTranslationApp(server_url);
-                }
-            } else {
-                localStorage.setItem("selectedServer", '');
-            }
-        });
+        // testSocketConnection(server_url).then((isConnected) => {
+        //     if (isConnected) {
+        //         localStorage.setItem("selectedServer", server_url);
+        //
+        //         $serverSelection.addClass("hidden");
+        //         $translationApp.removeClass("hidden");
+        //
+        //         if (typeof initializeTranslationApp === "function") {
+        //             initializeTranslationApp(server_url);
+        //         }
+        //     } else {
+        //         localStorage.setItem("selectedServer", '');
+        //     }
+        // });
 
     });
 
