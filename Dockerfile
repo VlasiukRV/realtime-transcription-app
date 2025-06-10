@@ -1,20 +1,20 @@
-# Используем официальный образ Node.js
+# Use the official Node.js image
 FROM node:18
 
-# Рабочая директория в контейнере
+# Set the working directory inside the container
 WORKDIR /app
 
-# Копируем package.json и package-lock.json (или yarn.lock) в контейнер
+# Copy package.json and package-lock.json (or yarn.lock) to the container
 COPY package*.json ./
 
-# Устанавливаем зависимости локально
+# Install dependencies locally
 RUN npm install
 
-# Копируем весь проект в контейнер
+# Copy the entire project into the container
 COPY . .
 
-# Собираем проект
+# Build the project
 RUN npm run build
 
-# Команда по умолчанию
+# Default command (opens a shell)
 CMD ["sh"]

@@ -13,70 +13,17 @@
 <main id="server-selection" class="flex flex-1 items-center justify-center">
     <div class="bg-white dark:bg-gray-800 p-6 rounded shadow-md w-full max-w-md text-center space-y-4">
         <h1 class="text-2xl font-semibold">Select Server</h1>
-        <select id="serverSelector" class="w-full border rounded px-4 py-2 dark:bg-gray-700 dark:border-gray-600">
+        <select id="server-selector" class="w-full border rounded px-4 py-2 dark:bg-gray-700 dark:border-gray-600">
             <option value="192.168.4.22">Local Server</option>
             <option value="192.168.25.160">Cherch</option>
         </select>
-        <button id="connectBtn"
+        <button id="connect-btn"
                 class="bg-gray-200 dark:bg-gray-700 px-3 py-1 rounded hover:bg-gray-300 dark:hover:bg-gray-600">Connect
         </button>
         <div id="statusMessage" class="text-sm mt-2 text-gray-600 dark:text-gray-300"></div>
     </div>
 
 </main>
-
-<!-- TRANSLATION INTERFACE -->
-<div id="translation-app" class="hidden flex flex-col flex-1">
-
-    <!-- Side Panel with buttons -->
-
-    <div id="side-panel" class="hidden side-panel bg-white dark:bg-gray-800 shadow px-4 py-3">
-
-    </div>
-
-
-    <!-- Header -->
-    <header class="bg-white dark:bg-gray-800 shadow flex items-center justify-between px-4 py-3 z-10">
-        <div class="font-bold text-xl flex items-center">
-            <button id="toggle-side-panel"
-                    class="bg-gray-200 dark:bg-gray-700 px-3 py-1 rounded hover:bg-gray-300 dark:hover:bg-gray-600">...
-            </button>
-        </div>
-
-        <div class="flex items-center space-x-2 mx-auto">
-            <span> From </span>
-            <select id="sourceLang" class="border rounded px-2 py-1 dark:bg-gray-700 dark:border-gray-600">
-                <option>English</option>
-            </select>
-            <span> to </span>
-            <select id="targetLang" class="border rounded px-2 py-1 dark:bg-gray-700 dark:border-gray-600">
-            </select>
-        </div>
-
-    </header>
-
-
-    <!-- Main content -->
-    <main class="main-content flex-1 overflow-hidden p-4 space-y-4">
-        <h2 class="text-lg font-semibold mb-2">Incoming Audio: English</h2>
-
-        <!-- Translation block -->
-        <div id="output" class="overflow-y-auto max-h-[calc(100vh-240px)] pr-2 scroll-smooth space-y-2">
-            <!-- Translation text will be appended here -->
-        </div>
-
-        <!-- Add more translation blocks here -->
-    </main>
-
-    <!-- Footer -->
-    <footer class="footer flex justify-between items-center px-4 py-3 mt-4">
-    <span id="service-message-output" class="text-sm text-gray-600 dark:text-gray-300">
-        Connected to translation server
-    </span>
-        <div id="footer" class="flex space-x-2">
-        </div>
-    </footer>
-</div>
 
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="main.js"></script>
